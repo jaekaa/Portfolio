@@ -7,22 +7,86 @@
         <meta name="description" content="Portfolio">
         <title>Portfolio Webpage</title>
         <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/styles1.css">
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+            integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+            crossorigin="anonymous"
+        />
+        <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+
+        <main class="wrapper">
+                <p>WEB</p>
+                <p>Designer</p>
+                <!-- <div class="social_media"> -->
+                <ul>
+                    <li>
+                        <a href="https://github.com/nikkzzzyu" target="_blank"><i class="fab fa-github icon"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://codepen.io/Jeanikka-Merjoy-Lumague" target="_blank"><i class="fab fa-codepen icon"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/jaekaa.a/" target="_blank"> <i class="fab fa-instagram icon"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/jiinxxxXx/" target="_blank"><i class="fab fa-facebook-f icon"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://twitter.com/jaekaa_a" target="_blank"><i class="fab fa-twitter icon"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=nikzzzlumaguemerjoy@gmail.com&tf=1" target="_blank"><i class="fas fa-envelope icon"></i></a>
+                    </li>
+                </ul>
+
+                <div class="info_container">
+                <!-- Div class=cart holds the cart -->
+                <div class="cart">
+                    <div class="image_wrapper">
+                    <img src="https://github.com/nikkzzzyu/Images/blob/main/Profile/me.jpg?raw=true" alt="" />
+                    </div>
+                    <h1>
+                    Nikka<br />
+                    </h1>
+                    <hr />
+                    <p>Front-end Web Designer</p>
+                </div>
+                <!-- The text on the right that is wrapped in the info_container -->
+                <div class="text">
+                    <h2>HELLO</h2>
+                    <p>Here's who I am and what I do</p>
+                    <a href="#resume">Resume</a>
+                    <a href="#projects">Projects</a>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Proin pellentesque justo lacus, ac dapibus leo congue a. 
+                        Suspendisse elit quam, dignissim sed lectus vel, auctor porttitor est. 
+                        Suspendisse fringilla quam sem, a iaculis massa vestibulum non. 
+                        Nulla quis leo ante.
+                    </p>
+                </div>
+            </div>  
+        </main>
     </head>
 
     <body>
         <nav id="navbar" class="nav">
-            <ul>
+            <ul class="sentence">
                 <li>
-                    <a href="#about">
+                    <a href="#about"s>
                         <span class="code">&lt;</span>
                         About
                         <span class="code">&#47;&gt;</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#projects">
+                    <a href="#achievements">
                         <span class="code">&lt;</span>
-                        Projects
+                        Achievements 
                         <span class="code">&#47;&gt;</span>
                     </a>
                 </li>
@@ -35,21 +99,12 @@
                 </li>
             </ul>
         </nav>
-        <section id="welcome-section">
-            <div>
-                <h1>Hello<span>,</span></h1>
-                <p id="subheading">I'm <span>Nikka</span></p>
-            </div>
-            <div>
-                <img class="welcome-img" id="desktop-only" src="https://raw.githubusercontent.com/sfoteini/responsive-web-design-freeCodeCamp/fb2b6eac8dfc8903983db91fbb491d134ba266e6/personal-portfolio/images/code-1.svg" alt="A code snippet in C language">
-                <img class="welcome-img" id="mobile-only" src="https://raw.githubusercontent.com/sfoteini/responsive-web-design-freeCodeCamp/fb2b6eac8dfc8903983db91fbb491d134ba266e6/personal-portfolio/images/code-2.svg" alt="A code snippet in C language">
-            </div>
-        </section>
+
         <section id="about">
-            <h2>My Story:</h2>
+            <h2 class="title">About Me:</h2>
             <div id="about-container">
                 <div id="my-story">
-                    <p>
+                    <p class="sentence">
                         I am currently a student at the University of Cordilleras, where I am pursuing a Bachelor's degree 
                         in Information Technology major in Web Technology. While my academic journey has equipped me with notable expertise in the 
                         fields of information technology and programming, my true passion lies in Arts & Design. I derive 
@@ -60,8 +115,8 @@
                     </p>
                 </div>
                 <div id="interests-list">
-                    <h3>Interests</h3>
-                    <ul>
+                    <h3 class="title">Interests</h3>
+                    <ul class="sentence">
                         <li>Animation</li>
                         <li>Digital Art</li>
                         <li>Graphic&nbsp;Design</li>
@@ -73,8 +128,8 @@
         </section>
             
         <section id="projects">
-            <h2>My Work:</h2>
-            <p>Here's a list of projects I built for the Responsive Web Design Certification on freeCodeCamp.</p>
+            <h2 class="title">My Work:</h2>
+            <p class="sentence">Here's a list of projects I built for the Responsive Web Design Certification on freeCodeCamp.</p>
             
             <div class="projects-grid">
                 <div class="card">
@@ -85,7 +140,7 @@
                         <h3 class="project-tile">
                             <a href="https://nikkzzzyu.github.io/SurveyForm/" target="_blank">Survey Form</a>
                         </h3>
-                        <p>A survey form UI for an online course, built with HTML and CSS</p>
+                        <p class="sentence">A survey form UI for an online course, built with HTML and CSS</p>
                     </div>
                 </div>
 
@@ -97,7 +152,7 @@
                         <h3 class="project-tile">
                             <a href="https://nikkzzzyu.github.io/TributePage/" target="_blank">Tribute Page</a>
                         </h3>
-                        <p>A tribute page about Villanueva Family, built with HTML and CSS</p>
+                        <p class="sentence">A tribute page about Villanueva Family, built with HTML and CSS</p>
                     </div>
                 </div>
 
@@ -109,7 +164,7 @@
                         <h3 class="project-tile">
                             <a href="https://nikkzzzyu.github.io/TechDoc/" target="_blank">Technical Documentation Page</a>
                         </h3>
-                        <p>A technical documentation page made for HTML, built with HTML and CSS</p>
+                        <p class="sentence">A technical documentation page made for HTML, built with HTML and CSS</p>
                     </div>
                 </div>
             
@@ -121,7 +176,7 @@
                         <h3 class="project-tile">
                             <a href="https://nikkzzzyu.github.io/ProdPage/" target="_blank">Product Landing Page</a>
                         </h3>
-                        <p>A product landing page about iPhone, built with HTML and CSS</p>
+                        <p class="sentence">A product landing page about iPhone, built with HTML and CSS</p>
                     </div>
                 </div>
             
@@ -133,7 +188,7 @@
                         <h3 class="project-tile">
                             <a href="https://nikkzzzyu.github.io/Portfolio/" target="_blank">Personal Portfolio Webpage</a>
                         </h3>
-                        <p>A static personal portfolio, built with HTML and CSS</p>
+                        <p class="sentence">A static personal portfolio, built with HTML and CSS</p>
                     </div>
                 </div>
 
@@ -145,29 +200,10 @@
                         <h3 class="project-tile">
                             <a>Coming Soon</a>
                         </h3>
-                        <p>New Codes will be Published Soon.</p>
+                        <p class="sentence">New Codes will be Published Soon.</p>
                     </div>
                 </div>
         </section>
             
-        <section id="contact">
-            <p>Let's work together</p>
-            <p>Find me on</p>
-            <div class="contact-links">
-                <a href="https://github.com/nikkzzzyu" id="profile-link" target="_blank" class="contact-details">
-                    <img src="https://raw.githubusercontent.com/sfoteini/responsive-web-design-freeCodeCamp/afcd86eae3fc73fd254e961fec9f69d190160212/personal-portfolio/images/github.svg" alt="github logo" class="contact-icon">GitHub
-                </a>
-            </div>
-        </section>
-
-        <footer>
-            <p>
-                <span class="code">&lt;</span>
-                <span class="code">&#47;&gt;</span>
-                with
-                <span class="heart"></span>
-                by Nikka
-            </p>
-        </footer>    
     </body>
 </html>

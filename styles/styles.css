@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +18,7 @@ body {
 }
 
 h1 {
-    font-size: 6rem;
+    font-size: 20rem;
     font-weight: 600;
     margin: 8rem 0 2rem 0;
 }
@@ -30,6 +31,14 @@ h1 {
 
 h2 {
     margin-bottom: 3rem;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.sentence {
+    font-size: 1.5rem;
 }
 
 li {
@@ -49,6 +58,10 @@ img {
 
 /* Navigation */
 
+.size {
+    font-size: 0.5rem;
+}
+
 .nav {
     display: flex;
     justify-content: center;
@@ -59,7 +72,8 @@ img {
     min-height: 75px;
     background-color: #fff;
     box-shadow: 0 1rem 1rem -1rem rgba(5, 20, 50, 0.2);
-    z-index: 10;
+    z-index: 20;
+    font-weight: 50px;
 }
 
 nav > ul {
@@ -206,11 +220,12 @@ nav a:hover .code {
 #my-story {
     width: 100%;
     padding: 0 2rem;
+    font-size: 20px;
 }
 
 #interests-list {
-    background-color: #122752;
-    color: #fff;
+    background-color: #eee;
+    color: #565656;
     padding: 4rem;
     border-radius: 20px;
 }
@@ -295,7 +310,7 @@ nav a:hover .code {
 
 /* Footer */
 
-footer {
+/* footer {
     text-align: center;
     background-color: #081838;
     color: #fff;
@@ -315,7 +330,7 @@ footer .code {
 
 /* Code for Firefox */
 
-::-moz-selection { 
+/* ::-moz-selection { 
     color: #fff;
     background: #669ce7;
 }
@@ -324,4 +339,4 @@ footer .code {
     color: #fff;
     background: #669ce7;
 }
-
+ */ 
