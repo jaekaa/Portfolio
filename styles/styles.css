@@ -69,8 +69,8 @@ img {
     position: fixed;
     top: 0;
     width: 100%;
-    min-height: 75px;
-    background-color: #fff;
+    min-height: 60px;
+    background-color: #eee;
     box-shadow: 0 1rem 1rem -1rem rgba(5, 20, 50, 0.2);
     z-index: 20;
     font-weight: 50px;
@@ -87,12 +87,59 @@ nav li {
 }
 
 nav .code {
-    color: white;
+    color: #eee;
     transition: color 0.3s ease-out;
 }
 
 nav a:hover .code {
     color: #6d93f4;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation li {
+    list-style: none;
+    margin-left: 20px;
+}
+
+.navigation li a {
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #112434;
+    border-radius: 20px;
+    font-size: clamp(0.9rem, 6vw, 1rem);
+}
+
+.navigation li a:hover,
+.navigation li a.active {
+    background: #565656;
+    color: #eee;
+    }
+
+.parallax {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150dvh;
+    background: rgb(206, 245, 223);
+    background: radial-gradient(
+        circle,
+        rgba(206, 245, 223, 0.4) 34%,
+        rgba(206, 245, 223, 1) 68%
+    );
+}
+
+.parallax img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
 }
 
 /* Contact section */
@@ -306,37 +353,3 @@ nav a:hover .code {
 .project-tile > a {
     color: #5f82d2;
 }
-
-
-/* Footer */
-
-/* footer {
-    text-align: center;
-    background-color: #081838;
-    color: #fff;
-}
-
-footer .heart::before {
-    content: '\2665';
-    color: #6d93f4;
-    font-size: 2rem;
-}
-
-footer .code {
-    color: #6d93f4;
-}
-
-/* Text Selection Color */
-
-/* Code for Firefox */
-
-/* ::-moz-selection { 
-    color: #fff;
-    background: #669ce7;
-}
-
-::selection {
-    color: #fff;
-    background: #669ce7;
-}
- */ 
