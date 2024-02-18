@@ -23,14 +23,14 @@ main {
   height: 300px;
   list-style-type: none;
   position: absolute;
-  top: 50%;
+  top: 80%;
   transform: translateY(-50%);
   z-index: 1;
   background-position: center;
   background-size: cover;
   border-radius: 20px;
-  box-shadow: 0 20px 30px rgba(255,255,255,0.3) inset;
-  transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
+  box-shadow: 0 20px 30px rgba(255, 255, 255, 0.3) inset;
+  transition: transform 0.5s ease, left 0.5s ease, opacity 0.5s ease;
 
   &:nth-child(1), &:nth-child(2) {
     left: 0;
@@ -55,9 +55,9 @@ main {
   top: 50%;
   left: 3rem;
   transform: translateY(-50%);
-  font: 400 0.85rem helvetica,sans-serif;
-  color: white;
-  text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+  font: 400 1.20rem helvetica,sans-serif;
+  color: rgb(64, 129, 147);
+  text-shadow: 0 3px 8px rgba(30, 25, 107, 0.5);
   opacity: 0;
   display: none;
 
@@ -75,8 +75,8 @@ main {
   & button {
     width: fit-content;
     background-color: rgba(0,0,0,0.1);
-    color: white;
-    border: 2px solid white;
+    color: rgb(64, 129, 147);
+    border: 2px solid #e3e0e0;
     border-radius: 0.25rem;
     padding: 0.75rem;
     cursor: pointer;
