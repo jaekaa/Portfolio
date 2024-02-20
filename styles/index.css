@@ -29,6 +29,11 @@ h2+p {
     margin-top: 0.6em;
 }
 
+.sentence {
+    font-size: 1em;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
 .wrapper {
     position: relative;
     width: 110%;
