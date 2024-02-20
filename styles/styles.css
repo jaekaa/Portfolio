@@ -358,6 +358,7 @@ nav a:hover .code {
 }
 
 .sentence {
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 1rem;
     color: #555;
 }
