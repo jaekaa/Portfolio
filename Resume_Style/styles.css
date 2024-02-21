@@ -59,7 +59,7 @@ h3 {
     width: 100%;
     width: var(--wrapper-width);
     background: #fbfbfb;
-    margin: 20px auto;
+    margin: 30px auto;
     border: 1px solid var(--color-reverse);
     box-shadow: 0 0 20px -3px var(--base-border);
     position: relative;
