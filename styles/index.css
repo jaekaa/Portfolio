@@ -29,11 +29,6 @@ h2+p {
     margin-top: 0.6em;
 }
 
-.sentence {
-    font-size: 1em;
-    font-family: 'Nunito Sans', sans-serif;
-}
-
 .wrapper {
     position: relative;
     width: 110%;
@@ -246,7 +241,31 @@ hr {
     letter-spacing: 3px;
 }
 
-/* Right text in the info_container styling */
+#interests-list {
+    position: relative;
+    top: -50px;
+}
+
+/* Text styling */
+
+.sentence {
+    color: black;
+    font-size: 1em;
+    font-family: 'Nunito Sans', sans-serif;
+    letter-spacing: 1px;
+    position: relative;
+    top: -45px;
+}
+
+.list {
+    color: #000;
+    font-size: 1.3em;
+}
+
+.title {
+    font-size: 3em;
+    z-index: 2;
+}
 
 .text {
     position: absolute;
