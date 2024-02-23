@@ -1,18 +1,15 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const projectCards = document.querySelectorAll('.project-card');
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('.navigation a');
 
-    function showNextCard() {
-        projectCards.forEach(card => {
-            card.classList.remove('active');
+    // Add click event listener to each navigation link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Remove 'active' class from all navigation links
+            navLinks.forEach(navLink => navLink.classList.remove('active'));
+
+            // Add 'active' class to the clicked navigation link
+            link.classList.add('active');
         });
-
-        const currentCardIndex = Math.floor(Math.random() * projectCards.length);
-        projectCards[currentCardIndex].classList.add('active');
-    }
-
-    // Set the initial state
-    showNextCard();
-
-    // Automatically transition to the next card every 6 seconds
-    setInterval(showNextCard, 6000);
+    });
 });
