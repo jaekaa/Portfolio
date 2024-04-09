@@ -1,115 +1,116 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const cols = 3;
-    const main = document.getElementById('main');
-    const photography = document.getElementById('photography');
-    let parts = [];
 
-    photography.addEventListener('mousemove', function(e) {
-    const rect = photography.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
-});
-    let images = [
-        "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80",
-        "https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80",
-        "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80"
-    ];
-    let current = 0;
-    let playing = false;
-
-    for (let i = 0; i < images.length; i++) {
-        new Image().src = images[i];
-    }
-
-    for (let col = 0; col < cols; col++) {
-        let part = document.createElement('div');
-        part.className = 'part';
-        let el = document.createElement('div');
-        el.className = "section";
-        let img = document.createElement('img');
-        img.src = images[current];
-        el.appendChild(img);
-        part.style.setProperty('--x', -100/cols*col+'vw');
-        part.appendChild(el);
-        main.appendChild(part);
-        parts.push(part);
-    }
-
-    let animOptions = {
-        duration: 0.6,
-        ease: "power2.inOut"
-    };
-
-    function go(dir) {
-        if (!playing) {
-            playing = true;
-            current += dir;
-            if (current < 0) current = images.length - 1;
-            if (current >= images.length) current = 0;
-
-            function down(part, next) {
-                part.prepend(next);
-                gsap.to(part, { duration: 0, y: -window.innerHeight });
-                gsap.to(part, { ...animOptions, y: 0 }).then(function () {
-                    part.children[1].remove();
-                    playing = false;
-                });
-            }
-
-            function up(part, next) {
-                part.appendChild(next);
-                gsap.to(part, { ...animOptions, y: window.innerHeight }).then(function () {
-                    part.children[0].remove();
-                    gsap.to(part, { duration: 0, y: 0 });
-                    playing = false;
-                });
-            }
-
-            for (let p = 0; p < parts.length; p++) {
-                let part = parts[p];
-                let next = document.createElement('div');
-                next.className = 'section';
-                let img = document.createElement('img');
-                img.src = images[current];
-                next.appendChild(img);
-
-                if ((p - Math.max(0, dir)) % 2) {
-                    down(part, next);
-                } else {
-                    up(part, next);
-                }
-            }
-        }
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-            go(1);
-        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-            go(-1);
+    function HoverCarousel( elm, settings ){
+        this.DOM = {
+        scope: elm,
+        wrap: elm.querySelector('ul').parentNode
         }
         
-    });
-});
-
-$(document).ready(function() {
-    $(window).on('scroll', function() {
-        var scrollTop = $(this).scrollTop();
-        var windowHeight = $(this).height();
-        var docHeight = $(document).height();
-        var scrollPercent = (scrollTop) / (docHeight - windowHeight) * 100;
-
-        $('.section img').removeClass('active');
-
-        if (scrollPercent < 33) {
-        $('.left-img img').addClass('active');
-        } else if (scrollPercent > 66) {
-        $('.right-img img').addClass('active');
-        } else {
-        $('.center-img img').addClass('active');
+        this.containerWidth = 0;
+        this.scrollWidth = 0;
+        this.posFromLeft = 0;    // Stripe position from the left of the screen
+        this.stripePos = 0;    // When relative mouse position inside the thumbs stripe
+        this.animated = null;
+        this.callbacks = {}
+        
+        this.init()
+    }
+    
+    HoverCarousel.prototype = {
+        init(){
+        this.bind()
+        },
+        
+        destroy(){
+        this.DOM.scope.removeEventListener('mouseenter', this.callbacks.onMouseEnter)
+        this.DOM.scope.removeEventListener('mousemove', this.callbacks.onMouseMove)
+        },
+    
+        bind(){
+        this.callbacks.onMouseEnter = this.onMouseEnter.bind(this)
+        this.callbacks.onMouseMove = e => {
+            if( this.mouseMoveRAF ) 
+            cancelAnimationFrame(this.mouseMoveRAF)
+    
+            this.mouseMoveRAF = requestAnimationFrame(this.onMouseMove.bind(this, e))
         }
-    });
+        
+        this.DOM.scope.addEventListener('mouseenter', this.callbacks.onMouseEnter)
+        this.DOM.scope.addEventListener('mousemove', this.callbacks.onMouseMove)
+        },
+        
+        // calculate the thumbs container width
+        onMouseEnter(e){
+        this.nextMore = this.prevMore = false // reset
+    
+        this.containerWidth       = this.DOM.wrap.clientWidth;
+        this.scrollWidth          = this.DOM.wrap.scrollWidth; 
+        // padding in percentage of the area which the mouse movement affects
+        this.padding              = 0.2 * this.containerWidth; 
+        this.posFromLeft          = this.DOM.wrap.getBoundingClientRect().left;
+        var stripePos             = e.pageX - this.padding - this.posFromLeft;
+        this.pos                  = stripePos / (this.containerWidth - this.padding*2);
+        this.scrollPos            = (this.scrollWidth - this.containerWidth ) * this.pos;
+    
+        // temporary add smoothness to the scroll 
+        this.DOM.wrap.style.scrollBehavior = 'smooth';
+        
+        if( this.scrollPos < 0 )
+            this.scrollPos = 0;
+        
+        if( this.scrollPos > (this.scrollWidth - this.containerWidth) )
+            this.scrollPos = this.scrollWidth - this.containerWidth
+    
+        this.DOM.wrap.scrollLeft = this.scrollPos
+        this.DOM.scope.style.setProperty('--scrollWidth',  (this.containerWidth / this.scrollWidth) * 100 + '%');
+        this.DOM.scope.style.setProperty('--scrollLleft',  (this.scrollPos / this.scrollWidth ) * 100 + '%');
+    
+        // lock UI until mouse-enter scroll is finihsed, after aprox 200ms
+        clearTimeout(this.animated)
+        this.animated = setTimeout(() => {
+            this.animated = null
+            this.DOM.wrap.style.scrollBehavior = 'auto';
+        }, 200)
+    
+        return this
+        },
+    
+        // move the stripe left or right according to mouse position
+        onMouseMove(e){
+        // don't move anything until inital movement on 'mouseenter' has finished
+        if( this.animated ) return
+    
+        this.ratio = this.scrollWidth / this.containerWidth
+        
+        // the mouse X position, "normalized" to the carousel position
+        var stripePos = e.pageX - this.padding - this.posFromLeft 
+        
+        if( stripePos < 0 )
+            stripePos = 0
+    
+        // calculated position between 0 to 1
+        this.pos = stripePos / (this.containerWidth - this.padding*2) 
+        
+        // calculate the percentage of the mouse position within the carousel
+        this.scrollPos = (this.scrollWidth - this.containerWidth ) * this.pos 
+    
+        this.DOM.wrap.scrollLeft = this.scrollPos
+        
+        // update scrollbar
+        if( this.scrollPos < (this.scrollWidth - this.containerWidth) )
+            this.DOM.scope.style.setProperty('--scrollLleft',  (this.scrollPos / this.scrollWidth ) * 100 + '%');
+    
+        // check if element has reached an edge
+        this.prevMore = this.DOM.wrap.scrollLeft > 0
+        this.nextMore = this.scrollWidth - this.containerWidth - this.DOM.wrap.scrollLeft > 5
+        
+        this.DOM.scope.setAttribute('data-at',
+            (this.prevMore  ? 'left ' : ' ')
+            + (this.nextMore ? 'right' : '')
+        )
+        }
+    }
+                
+    var carouselElm = document.querySelector('.carousel')
+    new HoverCarousel(carouselElm)                          
 });

@@ -300,6 +300,30 @@ nav a:hover .code {
     color: #555;
 }
 
-#photography h2 {
+#drawings h2 {
     text-align: center;
+}
+
+#drawings p {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 1em;
+}
+
+#footer {
+    font-family: 'Nunito Sans', "Lato", "Calibri", Arial, Helvetica, sans-serif;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #eee;
+    color: #000000;
+    text-align: center;
+    z-index: 1000;
+}
+
+#footer p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1rem;
+    color: #000000;
 }
