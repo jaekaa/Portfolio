@@ -9,7 +9,6 @@
     width: 60%;
     height: auto; /* Adjusted height */
     margin: 0 auto;
-    margin-bottom: 200px;
     -webkit-overflow-scrolling: touch;
     overflow: hidden; 
 }

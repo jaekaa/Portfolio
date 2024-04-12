@@ -1,3 +1,9 @@
+:root {
+    --accent-color: #565656;
+    --border-radius: 30px;
+}
+
+
 * {
     font-family: 'Nunito Sans', "Lato", "Calibri", Arial, Helvetica, sans-serif;
     margin: 0;
@@ -57,8 +63,7 @@ img {
     display: block;
 }
 
-/* Navigation */
-
+/* NAVIGATION */
 .size {
     font-size: 0.5rem;
 }
@@ -143,42 +148,7 @@ nav a:hover .code {
     pointer-events: none;
 }
 
-/* Contact section */
-
-#contact {
-    text-align: center;
-    background-color: #081838;
-    color: #fff;
-}
-
-.contact-icon {
-    width: 2rem;
-    padding: 1rem;
-    filter: invert(100%);
-}
-
-.contact-links {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-}
-
-.contact-details {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-}
-
-.contact-details:hover {
-    color: #6d93f4;
-}
-
-/* Welcome section */
-
+/* WELCOME SECTION */
 #welcome-section {
     margin: auto;
     display: flex;
@@ -237,8 +207,7 @@ nav a:hover .code {
     }
 }
 
-/* About section */
-
+/* ABOUT SECTION */
 #about {
     padding: 10rem 10rem 10rem 10rem;
 }
@@ -300,16 +269,173 @@ nav a:hover .code {
     color: #555;
 }
 
+/* SKILLS AND LANGUAGE SECTION */
+.col-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.content {
+    border-radius: var(--border-radius);
+    background: white;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+.content-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    margin: 0 50px;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-item {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+/* LANGUAGE */
+.language {
+    margin-bottom: 15px;
+}
+
+.language p {
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.bar {
+    background: rgba(0, 0, 0, 0.1);
+    display: block;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar span {
+    height: 8px;
+    float: left;
+    background: var(--accent-color);
+}
+
+.tagalog {
+    width: 100%;
+}
+
+.english {
+    width: 90%;
+}
+
+.korean {
+    width: 50%;
+}
+
+/* SKILLS */
+.skill {
+    background-color: var(--accent-color);
+    color: #eee;
+    line-height: 35px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* DRAWINGS SECTION */
 #drawings h2 {
     text-align: center;
 }
 
 #drawings p {
     text-align: center;
-    margin-top: 5px;
     font-size: 1em;
 }
 
+/* CONTACT SECTION */
+#contact {
+    margin-bottom: 100px;
+}
+
+form {
+    width: 100%;
+    max-width: 600px;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+}
+
+.input-box input, textarea {
+    width: 100%;
+    margin: 1rem;
+    color: var(--accent-color);
+    font-size: 1rem;
+    padding-left: 0.3rem;
+}
+
+.input-box input::placeholder, textarea::placeholder {
+    color: var(--accent-color);
+    font-size: 1rem;
+    padding-left: 0.3rem;
+}
+
+.input-box textarea::placeholder {
+    padding-top: 0.3rem;
+}
+
+.input-box input:focus, textarea:focus {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.459);
+    outline: none;
+}
+
+.text-input {
+    height: 2rem;
+    background-color: transparent;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+    border-bottom: solid 2px var(--accent-color);
+}
+
+textarea {
+    height: 4rem;
+    border: none;
+    font-family: 'Nunito Sans', sans-serif;
+    border-bottom: solid 2px var(--accent-color);
+}
+
+.submit-btn {
+    color: var(--accent-color);
+    background-color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 10px 20px;
+    margin: 50px 50px;
+    border-radius: 30px;
+    border: none;
+    transition: 0.2s linear;
+    transition-property: background-color, color;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+    color: #fff;
+    background-color: var(--accent-color);
+    transition: 0.2s linear;
+    transition-property: background-color, color;
+    cursor: pointer;
+}
+
+/* FOOTER SSECTION */
 #footer {
     font-family: 'Nunito Sans', "Lato", "Calibri", Arial, Helvetica, sans-serif;
     position: fixed;
@@ -326,4 +452,27 @@ nav a:hover .code {
     font-family: 'Nunito Sans', sans-serif;
     font-size: 1rem;
     color: #000000;
+}
+
+/* RESPONSIVENESS */
+@media screen and (max-width: 1200px) {
+    .content {
+        padding-bottom: 100px;
+    }
+
+    .content-card {
+        padding: 100px 0 0;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .col-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .content-card {
+        margin: 0 30px;
+    }
 }

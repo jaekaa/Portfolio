@@ -13,3 +13,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// JavaScript to handle smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const sectionId = this.getAttribute('href').substring(1);
+        
+        // Special case for "Drawings" section
+        if (sectionId === "drawings") {
+            // Scroll to the top of the section
+            document.getElementById(sectionId + "-section").scrollIntoView({
+                behavior: 'smooth'
+            });
+        } else {
+            // Scroll to the section as usual
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
